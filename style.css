@@ -1,0 +1,65 @@
+#table {
+	width: 400px;
+	height: 400px;
+	border: 5px solid black;
+}
+.row {
+	display: inline-block;
+}
+.column {
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+.column.white {
+	background: white;
+}
+.column.black {
+	background: black;
+}
+.piece {
+	cursor: pointer;
+	text-align: center;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	background: transparent;
+}
+/* Black */
+.piece.bishop.black {
+	background-image: url('black_bishop.svg');
+}
+.piece.king.black {
+	background-image: url('black_king.svg');
+}
+.piece.knight.black {
+	background-image: url('black_knight.svg');
+}
+.piece.pawn.black {
+	background-image: url('black_pawn.svg');
+}
+.piece.queen.black {
+	background-image: url('black_queen.svg');
+}
+.piece.rook.black {
+	background-image: url('black_rook.svg');
+}
+/* White */
+.piece.bishop.white {
+	background-image: url('white_bishop.svg');
+}
+.piece.king.white {
+	background-image: url('white_king.svg');
+}
+.piece.knight.white {
+	background-image: url('white_knight.svg');
+}
+.piece.pawn.white {
+	background-image: url('white_pawn.svg');
+}
+.piece.queen.white {
+	background-image: url('white_queen.svg');
+}
+.piece.rook.white {
+	background-image: url('white_rook.svg');
+}
