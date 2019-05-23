@@ -10,7 +10,7 @@
 **/
 let table=document.querySelector("#table")
 let pieces=table.querySelectorAll(".piece")
-let timeMe=true //true:bottom, false: top
+let timeMe=true //true:bottom(black), false: top(white)
 let pieceMe=true //true:black, false:white
 // console.log(pieces)
 
@@ -19,7 +19,8 @@ function get(x, y) {
 }
 
 function typeMe() {
-	return pieceMe === true ? "black" : "white"
+	return timeMe === true ? "black" : "white"
+	// return pieceMe === true ? "black" : "white"
 }
 
 function isPiece(piece) {
@@ -87,24 +88,7 @@ function offerPiece(piece, array, row, column) {
 	// Types = rook, knight, king, queen, bishop, pawn
 	let chooses=[]
 	if(type === "rook") {
-		for(var _column = 1; _column<=8 ; _column++) {
-			if(_column === column) {
-				continue
-			}
-			else if(isPieceBoard(row, _column)) {
-				continue
-			}
-			chooses.push({row: row, column: _column})
-		}
-		for(var _row = 1; _row<=8 ; _row++) {
-			if(_row === row) {
-				continue
-			}
-			else if(isPieceBoard(_row, column)) {
-				continue
-			}
-			chooses.push({row: _row, column: column})
-		}
+
 	}
 	else if(type === "knight") {
 		chooses.push()
@@ -119,20 +103,54 @@ function offerPiece(piece, array, row, column) {
 		chooses.push()
 	}
 	else if(type === "pawn") {
-		chooses.push()
+		if(typeMe() === "black") {
+			if(row == 7) {
+				chooses.push({row: row-2, column: column})
+			}
+			if(row == 1) {
+				// Soon
+			}
+			else {
+				chooses.push({row: row-1, column: column})
+			}
+		}
+		else if(typeMe() === "white") {
+			if(row == 2) {
+				chooses.push({row: row+2, column: column})
+			}
+			if(row == 8) {
+				// Soon
+			}
+			else {
+				chooses.push({row: row+1, column: column})
+			}
+		}
 	}
-	console.log(chooses)
+	// console.log(chooses)
+	chooses.forEach(function(choose, index, array) {
+		// console.log(choose)
+		let piece=get(choose.row, choose.column)
+		piece.parentNode.classList.add("cango")
+	})
 }
 
 // pieces.forEach(function(piece, index, array) {
-pieces.forEach(function(piece, array) {
+pieces.forEach(function(piece, index, array) {
 	piece.addEventListener("click", function() {
 		// pieces.forEach(function(_piece, _index, _array) {
+		let parent=piece.parentElement
+		let parentClasses=parent.classList
+		if(parentClasses.contains("cango")) {
+
+		}
 		pieces.forEach(function(_piece) {
-			_piece.parentElement.classList.remove("selected")
+			let _parent=_piece.parentElement
+			let _parentClasses=_parent.classList
+			_parentClasses.remove("selected")
+			_parentClasses.remove("cango")
 		})
 		if(piece.classList.contains(typeMe())) {
-			piece.parentElement.classList.add("selected")
+			parentClasses.add("selected")
 			let row=getChildNumber(piece.parentElement.parentElement)
 			let column=getChildNumber(piece.parentElement)
 			// console.log(getChildNumber(piece.parentElement))
