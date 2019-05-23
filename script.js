@@ -152,10 +152,12 @@ function offerPiece(piece, array, row, column) {
 				// Soon
 			}
 			else {
-				chooses.push({row: row-1, column: column})
-			}
-			if(row == 7) {
-				chooses.push({row: row-2, column: column})
+				if(!isPieceItemBoard(row-1, column)) {
+					chooses.push({row: row-1, column: column})
+					if(row == 7) {
+						chooses.push({row: row-2, column: column})
+					}
+				}
 			}
 		}
 		else if(typeMe() === "white") {
@@ -163,10 +165,12 @@ function offerPiece(piece, array, row, column) {
 				// Soon
 			}
 			else {
-				chooses.push({row: row+1, column: column})
-			}
-			if(row == 2) {
-				chooses.push({row: row+2, column: column})
+				if(!isPieceItemBoard(row-1, column)) {
+					chooses.push({row: row+1, column: column})
+					if(row == 2) {
+						chooses.push({row: row+2, column: column})
+					}
+				}
 			}
 		}
 	}
@@ -176,6 +180,7 @@ function offerPiece(piece, array, row, column) {
 		let piece=get(choose.row, choose.column)
 		piece.parentNode.classList.add("cango")
 	})
+	return chooses
 }
 
 // pieces.forEach(function(piece, index, array) {
@@ -251,7 +256,10 @@ pieces.forEach(function(piece, index, array) {
 					// console.log(getChildNumber(piece.parentElement))
 					// console.log(getChildNumber(piece.parentElement.parentElement))
 					// offerPiece(piece, index, array, row, column)
-					offerPiece(piece, array, row, column)
+					let chooses=offerPiece(piece, array, row, column)
+					if(chooses.length == 0) {
+						parentClasses.remove("selected")
+					}
 				}
 			}
 		}
