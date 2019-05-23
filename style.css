@@ -22,13 +22,16 @@
 	float: left;
 }
 .column.white {
-	background: white;
+	background: blue;
 }
 .column.black {
-	background: black;
+	background: green;
 }
 .column.selected {
 	background: yellow;
+}
+.column.cango {
+	background: orange;
 }
 .piece {
 	cursor: pointer;
