@@ -148,25 +148,25 @@ function offerPiece(piece, array, row, column) {
 	}
 	else if(type === "pawn") {
 		if(typeMe() === "black") {
-			if(row == 7) {
-				chooses.push({row: row-2, column: column})
-			}
 			if(row == 1) {
 				// Soon
 			}
 			else {
 				chooses.push({row: row-1, column: column})
 			}
+			if(row == 7) {
+				chooses.push({row: row-2, column: column})
+			}
 		}
 		else if(typeMe() === "white") {
-			if(row == 2) {
-				chooses.push({row: row+2, column: column})
-			}
 			if(row == 8) {
 				// Soon
 			}
 			else {
 				chooses.push({row: row+1, column: column})
+			}
+			if(row == 2) {
+				chooses.push({row: row+2, column: column})
 			}
 		}
 	}
