@@ -14,6 +14,15 @@ let timeMe=true //true:bottom(black), false: top(white)
 let pieceMe=true //true:black, false:white
 // console.log(pieces)
 
+function changePlayer() {
+	if(timeMe === true) {
+		timeMe=false;
+	}
+	else {
+		timeMe=true;
+	}
+}
+
 function get(x, y) {
 	return pieces[(x-1) * 8 + (y-1)]
 }
@@ -165,7 +174,7 @@ function offerPiece(piece, array, row, column) {
 				// Soon
 			}
 			else {
-				if(!isPieceItemBoard(row-1, column)) {
+				if(!isPieceItemBoard(row+1, column)) {
 					chooses.push({row: row+1, column: column})
 					if(row == 2) {
 						chooses.push({row: row+2, column: column})
@@ -240,6 +249,7 @@ pieces.forEach(function(piece, index, array) {
 			currentPiece.classList.remove("pawn")
 
 			// pieces[getIndex(currentRow, currentColumn)]=currentPiece
+			changePlayer();
 		}
 		else {
 			pieces.forEach(function(_piece) {
@@ -248,9 +258,12 @@ pieces.forEach(function(piece, index, array) {
 				_parentClasses.remove("selected")
 				_parentClasses.remove("cango")
 			})
+			console.log(piece)
+			console.log(piece.classList)
+			console.log(typeMe())
 			if(piece.classList.contains(typeMe())) {
 				let check=isPieceItemBoard(row, column)
-				// console.log(check)
+				console.log(check)
 				if(check) {
 					parentClasses.add("selected")
 					// console.log(getChildNumber(piece.parentElement))
@@ -258,6 +271,7 @@ pieces.forEach(function(piece, index, array) {
 					// offerPiece(piece, index, array, row, column)
 					let chooses=offerPiece(piece, array, row, column)
 					if(chooses.length == 0) {
+						console.log("remove offer...")
 						parentClasses.remove("selected")
 					}
 				}
