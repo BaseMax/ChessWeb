@@ -14,7 +14,7 @@ Chess Game...
 
 ## Similar Project
 
-https://github.com/BaseMax/ChessDesktop
+https://github.com/BaseMax/ChessDesktopElectron
 
 # License
 
