@@ -10,4 +10,12 @@ Chess Game...
 
 ![ScreenShot](screenshot4.png)
 
+---------
 
+## Similar Project
+
+https://github.com/BaseMax/ChessDesktop
+
+# License
+
+ChessWeb is licensed under the [GNU General Public License](LICENSE).
