@@ -9,7 +9,7 @@
 *
 **/
 let table=document.querySelector("#table")
-let pieces=document.querySelectorAll(".piece")
+let pieces=table.querySelectorAll(".piece")
 let timeMe=true //true:bottom, false: top
 let pieceMe=true //true:black, false:white
 // console.log(pieces)
