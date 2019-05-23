@@ -63,8 +63,35 @@ function isPieceBoard(x, y) {
 	return false
 }
 
+function isPieceItemBoard(x, y) {
+	let piece=get(x, y)
+	// console.log(piece)
+	let classes=piece.classList
+	// console.log(classes)
+	// Types = rook, knight, king, queen, bishop, pawn
+	if(classes.contains("rook")) {
+		return true
+	}
+	if(classes.contains("knight")) {
+		return true
+	}
+	if(classes.contains("king")) {
+		return true
+	}
+	if(classes.contains("queen")) {
+		return true
+	}
+	if(classes.contains("bishop")) {
+		return true
+	}
+	if(classes.contains("pawn")) {
+		return true
+	}
+	return false
+}
+
 function typePiece(piece) {
-	// rook, knight, king, queen, bishop, pawn
+	// Types = rook, knight, king, queen, bishop, pawn
 	let classes=piece.classList
 	if(classes.contains("rook")) {
 		return "rook"
@@ -98,9 +125,9 @@ function offerPiece(piece, array, row, column) {
 	// row++
 	// column++
 	let pieceIndex=(row-1)*8 + (column-1)
-	console.log("pieceIndex : " + pieceIndex)
-	console.log("row : " + row)
-	console.log("column : " + column)
+	// console.log("pieceIndex : " + pieceIndex)
+	// console.log("row : " + row)
+	// console.log("column : " + column)
 	let type=typePiece(piece)
 	// Types = rook, knight, king, queen, bishop, pawn
 	let chooses=[]
@@ -197,7 +224,7 @@ pieces.forEach(function(piece, index, array) {
 				newPiece.classList.remove("white")
 			}
 			newPiece.classList.add(typePiece(pieces[getIndex(currentRow, currentColumn)]))
-			console.log(getIndex(row, column))
+			// console.log(getIndex(row, column))
 
 			// Types = rook, knight, king, queen, bishop, pawn
 			currentPiece.classList.remove("rook")
@@ -217,11 +244,15 @@ pieces.forEach(function(piece, index, array) {
 				_parentClasses.remove("cango")
 			})
 			if(piece.classList.contains(typeMe())) {
-				parentClasses.add("selected")
-				// console.log(getChildNumber(piece.parentElement))
-				// console.log(getChildNumber(piece.parentElement.parentElement))
-				// offerPiece(piece, index, array, row, column)
-				offerPiece(piece, array, row, column)
+				let check=isPieceItemBoard(row, column)
+				// console.log(check)
+				if(check) {
+					parentClasses.add("selected")
+					// console.log(getChildNumber(piece.parentElement))
+					// console.log(getChildNumber(piece.parentElement.parentElement))
+					// offerPiece(piece, index, array, row, column)
+					offerPiece(piece, array, row, column)
+				}
 			}
 		}
 	})
