@@ -189,7 +189,8 @@ function offerPiece(piece, array, row, column) {
 		let piece=get(choose.row, choose.column)
 		piece.parentNode.classList.add("cango")
 	})
-	return chooses
+	// return chooses
+	return chooses.length
 }
 
 // pieces.forEach(function(piece, index, array) {
@@ -269,8 +270,12 @@ pieces.forEach(function(piece, index, array) {
 					// console.log(getChildNumber(piece.parentElement))
 					// console.log(getChildNumber(piece.parentElement.parentElement))
 					// offerPiece(piece, index, array, row, column)
-					let chooses=offerPiece(piece, array, row, column)
-					if(chooses.length == 0) {
+
+					// let chooses=offerPiece(piece, array, row, column)
+					// if(chooses.length == 0) {
+
+					let choosesLength=offerPiece(piece, array, row, column)
+					if(choosesLength == 0) {
 						console.log("remove offer...")
 						parentClasses.remove("selected")
 					}
